@@ -1,15 +1,22 @@
-body{
+body {
     background: #FFECEC;
     color: #FF78C4;
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
-    margin-inline: auto; 
-    width: 80%
-}
+   
+    margin: 0 auto; /* Menempatkan body di tengah halaman */
+    width: 100%; /* Lebar body 80% dari lebar viewport */
+    max-width: 800px; /* Atur lebar maksimum jika diperlukan */
+    height: 100rem;
+    font-weight: 600;
+  }
+
+
 
 .judul{
-    
-
+    font-size: 5rem;
+    text-align: center;
+   
 }
 
 .box{
@@ -18,27 +25,68 @@ body{
 
 .col{
     display: flex;
-    width: 200rem;
     height: 2rem; 
-    margin-bottom: 1rem;
+    margin-bottom: 1rem; 
 }
 
+
+/* ... CSS lainnya ... */
 
 .btn,
-.btn_cancel{
-
-    background: #FF78C4;
-    padding: .5rem;
-    color: #fff;
-    border-radius: 10%;
-    margin: 0 0 0 1rem;
+.btn_cancel,
+.btn_id {
+  font-weight: bolder;
+  background: #FF78C4;
+  padding: 1rem;
+  color: #fff;
+  border-radius: 10px;
+  margin-left: .5rem;
+  font-family: 'Poppins', sans-serif;
+  align-items: center;
+  display: flex;
+  justify-content: center; /* Menengahkan teks secara horizontal */
 }
+
+
+
+
 
 .btn_cancel {
     background: red;
 }
 
 .kolom_id{
-    width: 20rem;
+    width: 30rem;
     height: 30rem;
 }
+
+@media screen and (max-width: 600px) {
+    body {
+        width: 100%;
+        font-size: 16px; /* Ukuran font yang lebih cocok untuk perangkat seluler */
+        margin-left: 0;
+        margin-right: 0;
+    }
+  
+    .judul {
+      font-size: 3rem; /* Ukuran font judul yang lebih kecil */
+    }
+  
+    .col {
+      flex-direction: column; /* Mengubah tata letak kolom menjadi vertikal */
+      align-items: center; /* Pusatkan konten secara horizontal di perangkat seluler */
+    }
+  
+    .btn,
+    .btn_cancel,
+    .btn_id {
+      padding: 0.8rem; /* Padding tombol yang lebih kecil */
+      margin: 0.5rem 0; /* Margin diatur untuk tata letak vertikal */
+      font-size: 18px; /* Ukuran font yang lebih cocok untuk perangkat seluler */
+    }
+  
+    .kolom_id {
+      width: 80%; /* Atur lebar kolom ID agar sesuai dengan layar seluler */
+      height: 20rem; /* Tinggi textarea yang lebih kecil untuk seluler */
+    }
+  }
