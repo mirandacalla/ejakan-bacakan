@@ -63,7 +63,7 @@ body {
 @media screen and (max-width: 600px) {
     body {
         width: 100%;
-        font-size: 16px; /* Ukuran font yang lebih cocok untuk perangkat seluler */
+        font-size: 26px; /* Ukuran font yang lebih cocok untuk perangkat seluler */
         margin-left: 0;
         margin-right: 0;
     }
