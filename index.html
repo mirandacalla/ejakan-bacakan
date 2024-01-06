@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Spelling App</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap" rel="stylesheet">
+  <style>
+    /* Tempatkan style.css di sini */
+    /* ... */
+  </style>
+</head>
+<body>
+
+  <h1 class="judul">Spell it for me</h1>
+  
+  <div class="name">
+    <label class="box" for="nama">Nama Pembeli:</label>
+    <div class="col">
+      <input type="text" id="nama"><br><br>
+      <button class="btn" onclick="spellName()">Eja Nama</button>
+      <div class="read">
+        <button class="btn" onclick="readName()">Bacakan</button>
+        <button class="btn_cancel" onclick="cancel()">Batal</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="id">
+    <label class="box" for="nomor_id">Nomor ID :</label>
+    <div class="col">
+      <textarea class="kolom_id" id="nomor_id" rows="1" oninput="spellID(event)"></textarea><br><br> <!-- Memanggil spellID saat ada input -->
+      <button class="btn" onclick="spellOutID()">eja ID</button>
+    </div>
+  </div>
+
+  <script>
+    let currentSpeech;
+
+    function spellName() {
+      var nama = document.getElementById("nama").value;
+      if (nama.trim() === '') {
+        var msg = new SpeechSynthesisUtterance();
+        msg.lang = 'id';
+        msg.text = "Belum diisi cuy!";
+        currentSpeech = msg;
+        speechSynthesis.speak(msg);
+      } else {
+        cancel();
+        spellOut(nama);
+      }
+    }
+
+    function spellID(event) {
+      if (event.inputType !== 'deleteContentBackward') {
+        var nomorID = document.getElementById("nomor_id").value.replace(/\s/g, ''); // Menghilangkan spasi jika ada
+        if (nomorID.length % 16 === 0 && nomorID.length <= 1600) { // Setelah 16, 32, dan seterusnya hingga maksimal 100 baris
+          document.getElementById("nomor_id").value += '\n';
+        }
+      }
+    }
+
+    function spellOutID() {
+      var nomorID = document.getElementById("nomor_id").value;
+      cancel();
+      spellOut(nomorID);
+    }
+
+    function spellOut(text) {
+      var letters = text.split('');
+      letters.forEach(function(char) {
+        var msg = new SpeechSynthesisUtterance();
+        msg.lang = 'id';
+        if (char === ' ') {
+          msg.text = 'spasi';
+        } else {
+          msg.text = char;
+        }
+        currentSpeech = msg;
+        speechSynthesis.speak(msg);
+      });
+    }
+
+    function readName() {
+      var nama = document.getElementById("nama").value;
+      if (nama.trim() === '') {
+        var msg = new SpeechSynthesisUtterance();
+        msg.lang = 'id';
+        msg.text = "Belum diisi cuy!";
+        currentSpeech = msg;
+        speechSynthesis.speak(msg);
+      } else {
+        cancel();
+        var msg = new SpeechSynthesisUtterance();
+        msg.lang = 'id';
+        msg.text = nama;
+        currentSpeech = msg;
+        speechSynthesis.speak(msg);
+      }
+    }
+
+    function cancel() {
+      if (currentSpeech) {
+        speechSynthesis.cancel();
+        currentSpeech = null;
+      }
+    }
+  </script>
+</body>
+</html>

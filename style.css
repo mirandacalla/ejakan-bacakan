@@ -1,0 +1,44 @@
+body{
+    background: #FFECEC;
+    color: #FF78C4;
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    margin-inline: auto; 
+    width: 80%
+}
+
+.judul{
+    
+
+}
+
+.box{
+    margin-right: 1rem;
+}
+
+.col{
+    display: flex;
+    width: 200rem;
+    height: 2rem; 
+    margin-bottom: 1rem;
+}
+
+
+.btn,
+.btn_cancel{
+
+    background: #FF78C4;
+    padding: .5rem;
+    color: #fff;
+    border-radius: 10%;
+    margin: 0 0 0 1rem;
+}
+
+.btn_cancel {
+    background: red;
+}
+
+.kolom_id{
+    width: 20rem;
+    height: 30rem;
+}
